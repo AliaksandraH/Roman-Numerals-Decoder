@@ -8,9 +8,9 @@
     <title>Roman Number Converter</title>
 </head>
 <body>
-<p><b>Enter a number using Roman numerals (I, V, X, L, C, D, M).</p></b>
-<p><b>I = 1; V = 5; X = 10; L = 50; C = 100; D = 500; M = 1000.</p></b>
-<p><b>Integers from I to MMMCMXCIX are converted correctly.</p></b>
+<p><b>Enter a number using Roman numerals (I, V, X, L, C, D, M).</p>
+<p>I = 1; V = 5; X = 10; L = 50; C = 100; D = 500; M = 1000.</p>
+<p>Integers from I to MMMCMXCIX are converted correctly.</p>
 
 <form action="Roman Number Converter.php" method="post">
     <div>
@@ -24,28 +24,36 @@
 </html>
 
 <?php
-$roman = $_POST['roman_numeral'];
+$roman = @$_POST['roman_numeral'];
 $array = [];
 $num = 0;
 $roman = str_split(strrev($roman));
 foreach ($roman as $v) {
     switch ($v) {
         case 'M':
-            $array[] = 1000; break;
+            $array[] = 1000;
+            break;
         case 'D':
-            $array[] = 500; break;
+            $array[] = 500;
+            break;
         case 'C':
-            $array[] = 100; break;
+            $array[] = 100;
+            break;
         case 'L':
-            $array[] = 50; break;
+            $array[] = 50;
+            break;
         case 'X':
-            $array[] = 10; break;
+            $array[] = 10;
+            break;
         case 'V':
-            $array[] = 5; break;
+            $array[] = 5;
+            break;
         case 'I':
-            $array[] = 1; break;
+            $array[] = 1;
+            break;
     }
 }
+
 for ($i = 0; $i < count($array); $i++) {
     if ($i == 0 || $array[$i] > $array[$i - 1] || $array[$i] == $array[$i - 1]) {
         $num += $array[$i];
@@ -53,5 +61,5 @@ for ($i = 0; $i < count($array); $i++) {
         $num -= $array[$i];
     }
 }
-echo "Result: ".$num;
+echo "Result: " . $num;
 ?>
